@@ -1,0 +1,101 @@
+function AlienArmy.new 4
+    push constant 2
+    call Memory.alloc 1
+    pop pointer 0
+    push constant 10
+    pop this 1
+    push constant 0
+    pop local 1
+    push this 1
+    call Array.new 1
+    pop this 0
+    push constant 1
+    pop local 2
+    push constant 10
+    pop local 3
+label AlienArmy_0
+    push local 1
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_1
+    push local 2
+    push local 3
+    call Alien.new 2
+    pop local 0
+    push local 1
+    push this 0
+    add
+    push local 0
+    pop temp 0
+    pop pointer 1
+    push temp 0
+    pop that 0
+    push local 2
+    push constant 20
+    add
+    pop local 2
+    push local 1
+    push constant 1
+    add
+    pop local 1
+    goto AlienArmy_0
+label AlienArmy_1
+    push pointer 0
+    return
+function AlienArmy.update 2
+    push argument 0
+    pop pointer 0
+    push constant 0
+    pop local 0
+label AlienArmy_2
+    push local 0
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_3
+    push local 0
+    push this 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    call Alien.update 1
+    pop temp 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto AlienArmy_2
+label AlienArmy_3
+    push constant 0
+    return
+function AlienArmy.draw 2
+    push argument 0
+    pop pointer 0
+    push constant 0
+    pop local 0
+label AlienArmy_4
+    push local 0
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_5
+    push local 0
+    push this 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    call Alien.draw 1
+    pop temp 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto AlienArmy_4
+label AlienArmy_5
+    push constant 0
+    return

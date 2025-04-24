@@ -1,0 +1,31 @@
+class SpaceInvaderGame {
+    // fields
+    field boolean running;
+    field AlienArmy aliens;
+    field Ship player;
+
+    constructor SpaceInvaderGame new(){
+        let aliens = AlienArmy.new();
+        let player = Ship.new(256,220);
+
+        return this;
+    }
+
+
+    method void run(){
+        var int i;
+        let i = 0;
+
+        while(i<20){
+            do aliens.update();
+            do aliens.draw();
+            do player.draw();
+            do Sys.wait(1000);
+            do Screen.clearScreen();
+            let i = i+1;
+        }
+
+
+        return; 
+    }
+}

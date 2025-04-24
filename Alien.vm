@@ -1,0 +1,92 @@
+function Alien.new 0
+    push constant 2
+    call Memory.alloc 1
+    pop pointer 0
+    push argument 0
+    pop this 0
+    push argument 1
+    pop this 1
+    push constant 1
+    neg
+    pop static 0
+    push pointer 0
+    return
+function Alien.dispose 0
+    push argument 0
+    pop pointer 0
+    push pointer 0
+    call Alien.erase 1
+    pop temp 0
+    push pointer 0
+    call Memory.deAlloc 1
+    pop temp 0
+    push constant 0
+    return
+function Alien.update 0
+    push argument 0
+    pop pointer 0
+    push this 0
+    push constant 160
+    add
+    push constant 512
+    gt
+    not
+    if-goto Alien_1
+    push constant 0
+    pop static 0
+    goto Alien_0
+label Alien_1
+label Alien_0
+    push static 0
+    not
+    if-goto Alien_3
+    push this 0
+    push constant 20
+    add
+    pop this 0
+    goto Alien_2
+label Alien_3
+    push this 0
+    push constant 20
+    sub
+    pop this 0
+label Alien_2
+    push constant 0
+    return
+function Alien.draw 0
+    push argument 0
+    pop pointer 0
+    push constant 1
+    neg
+    call Screen.setColor 1
+    pop temp 0
+    push this 0
+    push this 1
+    push this 0
+    push constant 16
+    add
+    push this 1
+    push constant 16
+    add
+    call Screen.drawRectangle 4
+    pop temp 0
+    push constant 0
+    return
+function Alien.erase 0
+    push argument 0
+    pop pointer 0
+    push constant 0
+    call Screen.setColor 1
+    pop temp 0
+    push this 0
+    push this 1
+    push this 0
+    push constant 16
+    add
+    push this 1
+    push constant 16
+    add
+    call Screen.drawRectangle 4
+    pop temp 0
+    push constant 0
+    return

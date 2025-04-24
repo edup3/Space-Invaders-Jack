@@ -1,0 +1,45 @@
+class Alien {
+    field int x,y;
+    static boolean direction;
+
+    constructor Alien new(int ax,int ay){
+        let x = ax;
+        let y = ay;
+        let direction = true;
+
+        return this;
+    }
+
+    method void dispose(){
+        do erase();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method boolean update(){
+        if(x+40>512){
+            let direction = false;
+        }
+        
+        if(direction){
+            let x = x+20;
+        }
+        else {
+            let x = x-20;
+        }
+        return direction;
+        
+    }
+
+    method void draw(){
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x,y,x+16,y+16);
+        return;
+    }
+
+    method void erase(){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x,y,x+16,y+16);
+        return;
+    }
+}

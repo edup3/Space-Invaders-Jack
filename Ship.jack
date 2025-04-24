@@ -1,0 +1,16 @@
+class Ship {
+    field int x,y;
+    
+    constructor Ship new(int ax, int ay){
+        let x = ax;
+        let y = ay;
+
+        return this;
+    }
+
+    method void draw(){
+        do Screen.drawRectangle(x, y, x+10, y+10);
+        return;
+    }
+
+}

@@ -1,0 +1,45 @@
+function SpaceInvaderGame.new 0
+    push constant 3
+    call Memory.alloc 1
+    pop pointer 0
+    call AlienArmy.new 0
+    pop this 1
+    push constant 256
+    push constant 220
+    call Ship.new 2
+    pop this 2
+    push pointer 0
+    return
+function SpaceInvaderGame.run 1
+    push argument 0
+    pop pointer 0
+    push constant 0
+    pop local 0
+label SpaceInvaderGame_0
+    push local 0
+    push constant 20
+    lt
+    not
+    if-goto SpaceInvaderGame_1
+    push this 1
+    call AlienArmy.update 1
+    pop temp 0
+    push this 1
+    call AlienArmy.draw 1
+    pop temp 0
+    push this 2
+    call Ship.draw 1
+    pop temp 0
+    push constant 1000
+    call Sys.wait 1
+    pop temp 0
+    call Screen.clearScreen 0
+    pop temp 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto SpaceInvaderGame_0
+label SpaceInvaderGame_1
+    push constant 0
+    return

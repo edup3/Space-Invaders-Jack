@@ -1,0 +1,54 @@
+class AlienArmy {
+    field Array AlienArray;
+    field int length;
+
+    constructor AlienArmy new(){
+        var Alien alien;
+        var int i, posX, posY;
+        let length = 10;
+        let i =0;
+        let AlienArray = Array.new(length);
+        let posX = 1;
+        let posY = 10;
+
+        while(i<length){
+            let alien = Alien.new(posX,posY);
+            let AlienArray[i] = alien;
+            let posX = posX + 20;
+            let i= i+1;
+        }
+
+        return this;
+    } 
+
+    method void update(){
+        var int i;
+        var Alien current;
+
+        let i = 0;
+
+        while(i<length){
+            let current = AlienArray[i];
+            if(~(current.update())){
+            
+            }
+            let i = i+1;
+        }
+        return;
+    }
+
+     method void draw(){
+        var int i;
+        var Alien current;
+
+        let i = 0;
+
+        while(i<length){
+            let current = AlienArray[i];
+            do current.draw();
+            let i = i+1;
+        }
+        return;
+    }
+
+}
