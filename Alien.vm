@@ -22,11 +22,11 @@ function Alien.dispose 0
     pop temp 0
     push constant 0
     return
-function Alien.update 0
+function Alien.check 0
     push argument 0
     pop pointer 0
     push this 0
-    push constant 160
+    push constant 40
     add
     push constant 512
     gt
@@ -37,20 +37,38 @@ function Alien.update 0
     goto Alien_0
 label Alien_1
 label Alien_0
-    push static 0
+    push this 0
+    push constant 40
+    sub
+    push constant 0
+    lt
     not
     if-goto Alien_3
+    push constant 1
+    neg
+    pop static 0
+    goto Alien_2
+label Alien_3
+label Alien_2
+    push constant 0
+    return
+function Alien.update 0
+    push argument 0
+    pop pointer 0
+    push static 0
+    not
+    if-goto Alien_5
     push this 0
     push constant 20
     add
     pop this 0
-    goto Alien_2
-label Alien_3
+    goto Alien_4
+label Alien_5
     push this 0
     push constant 20
     sub
     pop this 0
-label Alien_2
+label Alien_4
     push constant 0
     return
 function Alien.draw 0
