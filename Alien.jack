@@ -40,11 +40,8 @@ class Alien {
     }
 
     method void draw(){
-        /*do Screen.setColor(true);
-        do Screen.drawRectangle(x,y,x+16,y+16);
-        return;*/
         var int memAddress; 
-        let memAddress = 16384+ (y*32) + (x/16);
+        let memAddress = 16384+ (y*32)+ (x/20);
        // column 0
         do Memory.poke(memAddress +64, 8196);
         do Memory.poke(memAddress +32, 0);
@@ -65,11 +62,8 @@ class Alien {
     }
 
     method void erase(){
-        /*do Screen.setColor(false);
-        do Screen.drawRectangle(x,y,x+16,y+16);
-        return;*/
         var int memAddress; 
-        let memAddress = 16384+ (y*32) + (x/16);
+        let memAddress = 16384+ (y*32) + (x/20);
        // column 0
         do Memory.poke(memAddress +64, 0);
         do Memory.poke(memAddress +32, 0);

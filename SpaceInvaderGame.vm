@@ -17,7 +17,7 @@ function SpaceInvaderGame.run 1
     pop local 0
 label SpaceInvaderGame_0
     push local 0
-    push constant 40
+    push constant 4
     lt
     not
     if-goto SpaceInvaderGame_1
