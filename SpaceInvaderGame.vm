@@ -14,8 +14,14 @@ function SpaceInvaderGame.run 2
     push argument 0
     pop pointer 0
 label SpaceInvaderGame_0
+<<<<<<< HEAD
     push constant 1
     neg
+=======
+    push local 0
+    push constant 4
+    lt
+>>>>>>> fcd6e964573e2b22d7db7a52532e0deaf6a670bb
     not
     if-goto SpaceInvaderGame_1
 label SpaceInvaderGame_2

@@ -80,7 +80,7 @@ function Alien.draw 1
     call Math.multiply 2
     add
     push this 0
-    push constant 16
+    push constant 20
     call Math.divide 2
     add
     pop local 0
@@ -192,7 +192,7 @@ function Alien.erase 1
     call Math.multiply 2
     add
     push this 0
-    push constant 16
+    push constant 20
     call Math.divide 2
     add
     pop local 0
