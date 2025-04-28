@@ -11,25 +11,39 @@ function Ship.new 0
 function Ship.move 0
     push argument 0
     pop pointer 0
-    call Keyboard.keyPressed 0
-    push constant 130
+    push argument 1
+    push constant 97
     eq
+    push this 0
+    push constant 40
+    sub
+    push constant 20
+    gt
+    and
     not
     if-goto Ship_1
     push this 0
-    push constant 5
+    push constant 20
     sub
     pop this 0
+    push constant 0
+    return
     goto Ship_0
 label Ship_1
 label Ship_0
-    call Keyboard.keyPressed 0
-    push constant 132
+    push argument 1
+    push constant 100
     eq
+    push this 0
+    push constant 40
+    add
+    push constant 460
+    lt
+    and
     not
     if-goto Ship_3
     push this 0
-    push constant 5
+    push constant 20
     add
     pop this 0
     goto Ship_2

@@ -14,18 +14,27 @@ class SpaceInvaderGame {
 
     method void run(){
         var int i;
-        let i = 0;
-
-        while(i<4){
-            do aliens.update();
-            do aliens.draw();
-            do player.move();
-            do player.draw();
-            do Sys.wait(1000);
-            do Screen.clearScreen();
-            let i = i+1;
+        var char key;
+        while(true){
+            while(key = 0){
+                do Screen.clearScreen();
+                do aliens.update();
+                do aliens.draw();
+                do player.draw();
+                do Sys.wait(20);
+                let key = Keyboard.keyPressed();
+            }
+            while(~(key = 0)){
+                do player.move(key);
+                do Screen.clearScreen();
+                do aliens.update();
+                do aliens.draw();
+                do player.draw();
+                do Sys.wait(20);
+                let key = Keyboard.keyPressed();
+            }
+            let key = Keyboard.keyPressed();
         }
-
 
         return; 
     }

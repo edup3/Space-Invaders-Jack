@@ -8,13 +8,14 @@ class Ship {
         return this;
     }
 
-    method void move() {
+    method void move(char key) {
     
-        if (Keyboard.keyPressed() = 130) { 
-            let x = x - 5;
+        if ((key = 97 & ((x - 40) > 20))) {
+            let x = x - 20;
+            return;
         }
-        if (Keyboard.keyPressed() = 132) {
-            let x = x + 5;
+        if ((key = 100 & ((x + 40) < 460))) { 
+            let x = x + 20;
         }
         
         return;
