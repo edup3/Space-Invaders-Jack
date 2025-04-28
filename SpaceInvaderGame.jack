@@ -19,6 +19,7 @@ class SpaceInvaderGame {
         while(i<20){
             do aliens.update();
             do aliens.draw();
+            do player.move();
             do player.draw();
             do Sys.wait(1000);
             do Screen.clearScreen();

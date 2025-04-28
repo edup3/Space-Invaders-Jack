@@ -1,0 +1,37 @@
+class Shot {
+    field int x, y;
+    field boolean active;
+
+    constructor Alien new(int ax,int ay){
+        let x = ax;
+        let y = ay;
+        let active = true;
+
+        return this;
+    }
+
+    method void moveUp() {
+        if (y > 0) {
+            let y = y - 4; 
+        } else {
+            let active = false; 
+        }
+
+        return;
+    }
+
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x-1, y-3, x+1, y+3);
+
+        return;
+    }
+
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x-1, y-3, x+1, y+3);
+
+        return;
+    }
+
+}

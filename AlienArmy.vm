@@ -62,7 +62,12 @@ label AlienArmy_2
     pop local 1
     push local 1
     call Alien.update 1
-    pop temp 0
+    not
+    not
+    if-goto AlienArmy_5
+    goto AlienArmy_4
+label AlienArmy_5
+label AlienArmy_4
     push local 0
     push constant 1
     add
@@ -76,12 +81,12 @@ function AlienArmy.draw 2
     pop pointer 0
     push constant 0
     pop local 0
-label AlienArmy_4
+label AlienArmy_6
     push local 0
     push this 1
     lt
     not
-    if-goto AlienArmy_5
+    if-goto AlienArmy_7
     push local 0
     push this 0
     add
@@ -95,7 +100,7 @@ label AlienArmy_4
     push constant 1
     add
     pop local 0
-    goto AlienArmy_4
-label AlienArmy_5
+    goto AlienArmy_6
+label AlienArmy_7
     push constant 0
     return

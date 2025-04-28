@@ -28,6 +28,9 @@ label SpaceInvaderGame_0
     call AlienArmy.draw 1
     pop temp 0
     push this 2
+    call Ship.move 1
+    pop temp 0
+    push this 2
     call Ship.draw 1
     pop temp 0
     push constant 1000
