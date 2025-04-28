@@ -10,17 +10,22 @@ function SpaceInvaderGame.new 0
     pop this 2
     push pointer 0
     return
-function SpaceInvaderGame.run 1
+function SpaceInvaderGame.run 2
     push argument 0
     pop pointer 0
-    push constant 0
-    pop local 0
 label SpaceInvaderGame_0
-    push local 0
-    push constant 40
-    lt
+    push constant 1
+    neg
     not
     if-goto SpaceInvaderGame_1
+label SpaceInvaderGame_2
+    push local 1
+    push constant 0
+    eq
+    not
+    if-goto SpaceInvaderGame_3
+    call Screen.clearScreen 0
+    pop temp 0
     push this 1
     call AlienArmy.update 1
     pop temp 0
@@ -28,20 +33,46 @@ label SpaceInvaderGame_0
     call AlienArmy.draw 1
     pop temp 0
     push this 2
-    call Ship.move 1
+    call Ship.draw 1
+    pop temp 0
+    push constant 20
+    call Sys.wait 1
+    pop temp 0
+    call Keyboard.keyPressed 0
+    pop local 1
+    goto SpaceInvaderGame_2
+label SpaceInvaderGame_3
+label SpaceInvaderGame_4
+    push local 1
+    push constant 0
+    eq
+    not
+    not
+    if-goto SpaceInvaderGame_5
+    push this 2
+    push local 1
+    call Ship.move 2
+    pop temp 0
+    call Screen.clearScreen 0
+    pop temp 0
+    push this 1
+    call AlienArmy.update 1
+    pop temp 0
+    push this 1
+    call AlienArmy.draw 1
     pop temp 0
     push this 2
     call Ship.draw 1
     pop temp 0
-    push constant 1000
+    push constant 20
     call Sys.wait 1
     pop temp 0
-    call Screen.clearScreen 0
-    pop temp 0
-    push local 0
-    push constant 1
-    add
-    pop local 0
+    call Keyboard.keyPressed 0
+    pop local 1
+    goto SpaceInvaderGame_4
+label SpaceInvaderGame_5
+    call Keyboard.keyPressed 0
+    pop local 1
     goto SpaceInvaderGame_0
 label SpaceInvaderGame_1
     push constant 0

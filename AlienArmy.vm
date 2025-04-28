@@ -62,18 +62,41 @@ label AlienArmy_2
     pop local 1
     push local 1
     call Alien.check 1
-    not
-    not
-    if-goto AlienArmy_5
-    goto AlienArmy_4
-label AlienArmy_5
-label AlienArmy_4
+    pop temp 0
     push local 0
     push constant 1
     add
     pop local 0
     goto AlienArmy_2
 label AlienArmy_3
+    push constant 0
+    pop local 0
+label AlienArmy_4
+    push local 0
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_5
+    push local 0
+    push this 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    call Alien.update 1
+    pop temp 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto AlienArmy_4
+label AlienArmy_5
+    push constant 0
+    return
+function AlienArmy.draw 2
+    push argument 0
+    pop pointer 0
     push constant 0
     pop local 0
 label AlienArmy_6
@@ -89,7 +112,7 @@ label AlienArmy_6
     push that 0
     pop local 1
     push local 1
-    call Alien.update 1
+    call Alien.draw 1
     pop temp 0
     push local 0
     push constant 1
