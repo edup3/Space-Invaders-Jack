@@ -16,18 +16,26 @@ class Alien {
         return;
     }
 
-    method boolean update(){
+    method void check(){
         if(x+40>512){
             let direction = false;
         }
-        
+        if (x-40<0){
+            let direction = true;
+        }
+        return;
+
+    }
+
+    method void update(){
         if(direction){
             let x = x+20;
         }
         else {
             let x = x-20;
         }
-        return direction;
+
+        return;
         
     }
 

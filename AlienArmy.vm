@@ -61,7 +61,7 @@ label AlienArmy_2
     push that 0
     pop local 1
     push local 1
-    call Alien.update 1
+    call Alien.check 1
     not
     not
     if-goto AlienArmy_5
@@ -74,11 +74,6 @@ label AlienArmy_4
     pop local 0
     goto AlienArmy_2
 label AlienArmy_3
-    push constant 0
-    return
-function AlienArmy.draw 2
-    push argument 0
-    pop pointer 0
     push constant 0
     pop local 0
 label AlienArmy_6
@@ -94,7 +89,7 @@ label AlienArmy_6
     push that 0
     pop local 1
     push local 1
-    call Alien.draw 1
+    call Alien.update 1
     pop temp 0
     push local 0
     push constant 1
