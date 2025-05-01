@@ -84,7 +84,7 @@ label AlienArmy_4
     push that 0
     pop local 1
     push local 1
-    call Alien.update 1
+    call Alien.updateX 1
     pop temp 0
     push local 0
     push constant 1
@@ -92,11 +92,6 @@ label AlienArmy_4
     pop local 0
     goto AlienArmy_4
 label AlienArmy_5
-    push constant 0
-    return
-function AlienArmy.draw 2
-    push argument 0
-    pop pointer 0
     push constant 0
     pop local 0
 label AlienArmy_6
@@ -112,13 +107,68 @@ label AlienArmy_6
     push that 0
     pop local 1
     push local 1
-    call Alien.draw 1
+    call Alien.updateY 1
+    not
+    if-goto AlienArmy_9
+    push constant 0
+    pop local 0
+label AlienArmy_10
+    push local 0
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_11
+    push local 0
+    push this 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    call Alien.moveDown 1
     pop temp 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto AlienArmy_10
+label AlienArmy_11
+    goto AlienArmy_8
+label AlienArmy_9
+label AlienArmy_8
     push local 0
     push constant 1
     add
     pop local 0
     goto AlienArmy_6
 label AlienArmy_7
+    push constant 0
+    return
+function AlienArmy.draw 2
+    push argument 0
+    pop pointer 0
+    push constant 0
+    pop local 0
+label AlienArmy_12
+    push local 0
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_13
+    push local 0
+    push this 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    call Alien.draw 1
+    pop temp 0
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto AlienArmy_12
+label AlienArmy_13
     push constant 0
     return

@@ -32,14 +32,32 @@ class AlienArmy {
             
             let i = i+1;
         }
-        let i = 0;    
+        let i = 0;  
+
         while(i<length){
             let current = AlienArray[i];
-            do current.update();
-            
-            
+            do current.updateX();
+
             let i = i+1;
         }
+
+        let i = 0; 
+
+        while(i<length){
+            let current = AlienArray[i];
+            if(current.updateY()) {
+                let i = 0;
+                while(i<length){
+                    let current = AlienArray[i];
+                    do current.moveDown();
+                    let i = i+1;
+                }   
+            }
+
+            let i = i+1;
+        }
+
+        
         return;
     }
 

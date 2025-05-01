@@ -24,20 +24,39 @@ class Alien {
             let direction = true;
         }
         return;
-
     }
 
-    method void update(){
+    method void updateX(){
         if(direction){
             let x = x+20;
         }
         else {
             let x = x-20;
         }
-
         return;
-        
     }
+
+    method boolean updateY(){
+        var boolean down;
+        if(x+40>512){
+            let down = true;
+        }
+        if (x-40<0){
+            let down = true;
+        }
+        else {
+            let down = false;
+        }
+
+        return down;    
+    }
+
+
+    method void moveDown(){
+        let y = y + 20;
+        return;
+    }
+
 
     method void draw(){
         var int memAddress; 

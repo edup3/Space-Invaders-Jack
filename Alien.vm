@@ -52,7 +52,7 @@ label Alien_3
 label Alien_2
     push constant 0
     return
-function Alien.update 0
+function Alien.updateX 0
     push argument 0
     pop pointer 0
     push static 0
@@ -69,6 +69,48 @@ label Alien_5
     sub
     pop this 0
 label Alien_4
+    push constant 0
+    return
+function Alien.updateY 1
+    push argument 0
+    pop pointer 0
+    push this 0
+    push constant 40
+    add
+    push constant 512
+    gt
+    not
+    if-goto Alien_7
+    push constant 1
+    neg
+    pop local 0
+    goto Alien_6
+label Alien_7
+label Alien_6
+    push this 0
+    push constant 40
+    sub
+    push constant 0
+    lt
+    not
+    if-goto Alien_9
+    push constant 1
+    neg
+    pop local 0
+    goto Alien_8
+label Alien_9
+    push constant 0
+    pop local 0
+label Alien_8
+    push local 0
+    return
+function Alien.moveDown 0
+    push argument 0
+    pop pointer 0
+    push this 1
+    push constant 20
+    add
+    pop this 1
     push constant 0
     return
 function Alien.draw 1
