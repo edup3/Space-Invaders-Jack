@@ -14,14 +14,8 @@ function SpaceInvaderGame.run 2
     push argument 0
     pop pointer 0
 label SpaceInvaderGame_0
-<<<<<<< HEAD
     push constant 1
     neg
-=======
-    push local 0
-    push constant 4
-    lt
->>>>>>> fcd6e964573e2b22d7db7a52532e0deaf6a670bb
     not
     if-goto SpaceInvaderGame_1
 label SpaceInvaderGame_2
@@ -41,7 +35,7 @@ label SpaceInvaderGame_2
     push this 2
     call Ship.draw 1
     pop temp 0
-    push constant 20
+    push constant 200
     call Sys.wait 1
     pop temp 0
     call Keyboard.keyPressed 0
@@ -70,7 +64,7 @@ label SpaceInvaderGame_4
     push this 2
     call Ship.draw 1
     pop temp 0
-    push constant 20
+    push constant 200
     call Sys.wait 1
     pop temp 0
     call Keyboard.keyPressed 0
