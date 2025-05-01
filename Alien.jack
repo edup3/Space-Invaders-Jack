@@ -16,14 +16,19 @@ class Alien {
         return;
     }
 
-    method void check(){
+    method boolean check(){
+    var boolean lastdir;
+    let lastdir = direction;
         if(x+40>512){
             let direction = false;
         }
         if (x-40<0){
             let direction = true;
         }
-        return;
+    if(~(lastdir=direction)){
+        return true;
+    }
+        return false;
     }
 
     method void updateX(){
@@ -36,20 +41,6 @@ class Alien {
         return;
     }
 
-    method boolean updateY(){
-        var boolean down;
-        if(x+40>512){
-            let down = true;
-        }
-        if (x-40<0){
-            let down = true;
-        }
-        else {
-            let down = false;
-        }
-
-        return down;    
-    }
 
 
     method void moveDown(){
