@@ -311,3 +311,24 @@ function Alien.erase 1
     pop temp 0
     push constant 0
     return
+function Alien.getX 0
+    push argument 0
+    pop pointer 0
+    push this 0
+    return
+function Alien.checkCol 0
+    push argument 0
+    pop pointer 0
+    push this 1
+    push argument 1
+    gt
+    not
+    if-goto Alien_9
+    push constant 1
+    neg
+    return
+    goto Alien_8
+label Alien_9
+label Alien_8
+    push constant 0
+    return

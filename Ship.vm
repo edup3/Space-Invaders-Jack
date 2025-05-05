@@ -1,11 +1,13 @@
 function Ship.new 0
-    push constant 2
+    push constant 4
     call Memory.alloc 1
     pop pointer 0
     push argument 0
     pop this 0
     push argument 1
     pop this 1
+    push constant 0
+    pop this 3
     push pointer 0
     return
 function Ship.move 0
@@ -199,5 +201,82 @@ function Ship.erase 1
     push constant 0
     call Memory.poke 2
     pop temp 0
+    push constant 0
+    return
+function Ship.getX 0
+    push argument 0
+    pop pointer 0
+    push this 0
+    return
+function Ship.getY 0
+    push argument 0
+    pop pointer 0
+    push this 1
+    return
+function Ship.createBullet 1
+    push argument 0
+    pop pointer 0
+    push argument 1
+    push constant 32
+    eq
+    not
+    if-goto Ship_5
+    push constant 10
+    push constant 2
+    call Math.divide 2
+    pop local 0
+    push this 0
+    push local 0
+    add
+    push this 1
+    push constant 15
+    sub
+    call Shot.new 2
+    pop this 2
+    push constant 1
+    neg
+    pop this 3
+    goto Ship_4
+label Ship_5
+label Ship_4
+    push constant 0
+    return
+function Ship.drawBullet 0
+    push argument 0
+    pop pointer 0
+    push this 3
+    not
+    if-goto Ship_7
+    push pointer 0
+    call Ship.checkBullet 1
+    pop temp 0
+    push this 2
+    call Shot.moveUp 1
+    pop temp 0
+    push this 2
+    call Shot.draw 1
+    pop temp 0
+    goto Ship_6
+label Ship_7
+label Ship_6
+    push constant 0
+    return
+function Ship.checkBullet 0
+    push argument 0
+    pop pointer 0
+    push this 2
+    call Shot.getY 1
+    push constant 11
+    lt
+    not
+    if-goto Ship_9
+    push constant 0
+    pop this 3
+    push this 2
+    call Shot.dispose 1
+    pop temp 0
+    goto Ship_8
+label Ship_9
+label Ship_8
     push constant 0
     return

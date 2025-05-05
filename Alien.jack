@@ -41,8 +41,6 @@ class Alien {
         return;
     }
 
-
-
     method void moveDown(){
         let y = y + 20;
         return;
@@ -91,5 +89,16 @@ class Alien {
         do Memory.poke(memAddress +448, 0);
         do Memory.poke(memAddress +480, 0);
         return;
+    }
+
+     method int getX(){
+        return x;
+    }
+
+    method boolean checkCol(int playerY){
+        if(y>playerY){
+            return true;
+        }
+        return false;
     }
 }

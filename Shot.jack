@@ -1,20 +1,21 @@
 class Shot {
     field int x, y;
-    field boolean active;
 
     constructor Alien new(int ax,int ay){
         let x = ax;
         let y = ay;
-        let active = true;
 
         return this;
+    }
+
+     method void dispose() {
+	    do Memory.deAlloc(this);
+        return;
     }
 
     method void moveUp() {
         if (y > 0) {
             let y = y - 4; 
-        } else {
-            let active = false; 
         }
 
         return;
@@ -32,6 +33,10 @@ class Shot {
         do Screen.drawRectangle(x-1, y-3, x+1, y+3);
 
         return;
+    }
+
+    method int getY(){
+        return y;
     }
 
 }

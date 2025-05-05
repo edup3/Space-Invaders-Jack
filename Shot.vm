@@ -1,15 +1,20 @@
 function Shot.new 0
-    push constant 3
+    push constant 2
     call Memory.alloc 1
     pop pointer 0
     push argument 0
     pop this 0
     push argument 1
     pop this 1
-    push constant 1
-    neg
-    pop this 2
     push pointer 0
+    return
+function Shot.dispose 0
+    push argument 0
+    pop pointer 0
+    push pointer 0
+    call Memory.deAlloc 1
+    pop temp 0
+    push constant 0
     return
 function Shot.moveUp 0
     push argument 0
@@ -25,8 +30,6 @@ function Shot.moveUp 0
     pop this 1
     goto Shot_0
 label Shot_1
-    push constant 0
-    pop this 2
 label Shot_0
     push constant 0
     return
@@ -74,4 +77,9 @@ function Shot.erase 0
     call Screen.drawRectangle 4
     pop temp 0
     push constant 0
+    return
+function Shot.getY 0
+    push argument 0
+    pop pointer 0
+    push this 1
     return

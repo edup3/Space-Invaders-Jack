@@ -1,9 +1,12 @@
 class Ship {
     field int x,y;
+    field Shot bullet;
+    field boolean flagBullet;
     
     constructor Ship new(int ax, int ay){
         let x = ax;
         let y = ay;
+        let flagBullet = false;
 
         return this;
     }
@@ -56,5 +59,42 @@ class Ship {
 
         return;
     }
+
+     method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method void createBullet(char key) {
+		var int posicion_x;
+
+        if(key = 32){
+            let posicion_x = (10)/2;
+            let bullet = Shot.new(x + posicion_x, y - 15);
+            let flagBullet = true;
+        }
+        return;
+    }
+
+    method void drawBullet(){
+        if(flagBullet){
+            do checkBullet();
+            do bullet.moveUp();
+            do bullet.draw();
+        }
+        return;
+    }
+
+     method void checkBullet(){
+        if (bullet.getY() < 11){
+            let flagBullet = false;
+			do bullet.dispose();
+        }
+        return;
+
+	}
 
 }

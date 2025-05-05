@@ -6,7 +6,7 @@ class SpaceInvaderGame {
 
     constructor SpaceInvaderGame new(){
         let aliens = AlienArmy.new();
-        let player = Ship.new(256,220);
+        let player = Ship.new(256,200);
 
         return this;
     }
@@ -15,12 +15,21 @@ class SpaceInvaderGame {
     method void run(){
         var int i;
         var char key;
-        while(true){
+        var boolean win;
+
+        let win = true;
+
+        while(win){
+            if(aliens.checkCol(player.getY())){
+                let win = false;
+            }
+
             while(key = 0){
                 do Screen.clearScreen();
                 do aliens.update();
                 do aliens.draw();
                 do player.draw();
+                do player.drawBullet();
                 do Sys.wait(200);
                 let key = Keyboard.keyPressed();
             }
@@ -30,11 +39,15 @@ class SpaceInvaderGame {
                 do aliens.update();
                 do aliens.draw();
                 do player.draw();
+                do player.createBullet(key);
+                do player.drawBullet();
                 do Sys.wait(200);
                 let key = Keyboard.keyPressed();
             }
             let key = Keyboard.keyPressed();
         }
+
+        do Output.printString("Perdiste");
 
         return; 
     }

@@ -157,3 +157,39 @@ label AlienArmy_10
 label AlienArmy_11
     push constant 0
     return
+function AlienArmy.checkCol 2
+    push argument 0
+    pop pointer 0
+    push constant 0
+    pop local 0
+label AlienArmy_12
+    push local 0
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_13
+    push local 0
+    push this 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    push argument 1
+    call Alien.checkCol 2
+    not
+    if-goto AlienArmy_15
+    push constant 1
+    neg
+    return
+    goto AlienArmy_14
+label AlienArmy_15
+label AlienArmy_14
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto AlienArmy_12
+label AlienArmy_13
+    push constant 0
+    return

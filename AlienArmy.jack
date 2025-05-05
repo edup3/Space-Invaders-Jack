@@ -2,6 +2,7 @@ class AlienArmy {
     field Array AlienArray;
     field int length;
 
+
     constructor AlienArmy new(){
         var Alien alien;
         var int i, posX, posY;
@@ -74,6 +75,23 @@ class AlienArmy {
             let i = i+1;
         }
         return;
+    }
+
+    method boolean checkCol(int y){
+        var int i;
+        var Alien current;
+
+        let i = 0;
+
+        while(i<length){
+            let current = AlienArray[i];
+            if(current.checkCol(y)){
+                return true;
+            }
+            let i = i+1;
+        }
+
+        return false;
     }
 
 }
