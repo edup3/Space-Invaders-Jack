@@ -28,9 +28,7 @@ function Alien.check 1
     push static 0
     pop local 0
     push this 0
-    push constant 40
-    add
-    push constant 512
+    push constant 600
     gt
     not
     if-goto Alien_1

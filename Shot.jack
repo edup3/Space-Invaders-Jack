@@ -14,8 +14,11 @@ class Shot {
     }
 
     method void moveUp() {
-        if (y > 0) {
-            let y = y - 4; 
+        if (y-10 > 0) {
+            let y = y - 10; 
+        }
+        else{
+            let y = 10;
         }
 
         return;

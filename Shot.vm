@@ -20,16 +20,20 @@ function Shot.moveUp 0
     push argument 0
     pop pointer 0
     push this 1
+    push constant 10
+    sub
     push constant 0
     gt
     not
     if-goto Shot_1
     push this 1
-    push constant 4
+    push constant 10
     sub
     pop this 1
     goto Shot_0
 label Shot_1
+    push constant 10
+    pop this 1
 label Shot_0
     push constant 0
     return

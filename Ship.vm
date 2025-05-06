@@ -280,3 +280,8 @@ label Ship_9
 label Ship_8
     push constant 0
     return
+function Ship.getFlagBullet 0
+    push argument 0
+    pop pointer 0
+    push this 3
+    return

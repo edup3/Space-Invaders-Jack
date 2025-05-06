@@ -97,4 +97,8 @@ class Ship {
 
 	}
 
+    method boolean getFlagBullet(){
+        return flagBullet;
+    }
+
 }

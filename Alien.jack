@@ -19,7 +19,7 @@ class Alien {
     method boolean check(){
     var boolean lastdir;
     let lastdir = direction;
-        if(x+40>512){
+        if(x>600){
             let direction = false;
         }
         if (x-40<0){
