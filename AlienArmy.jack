@@ -9,13 +9,13 @@ class AlienArmy {
         let length = 10;
         let i =0;
         let AlienArray = Array.new(length);
-        let posX = 1;
-        let posY = 10;
+        let posX = 0;
+        let posY = 0;
 
         while(i<length){
             let alien = Alien.new(posX,posY);
             let AlienArray[i] = alien;
-            let posX = posX + 20;
+            let posX = posX + 16;
             let i= i+1;
         }
 
@@ -87,6 +87,25 @@ class AlienArmy {
             let current = AlienArray[i];
             if(current.checkCol(y)){
                 return true;
+            }
+            let i = i+1;
+        }
+
+        return false;
+    }
+    method boolean checkHit(int bulletX,int bulletY,boolean flagBullet){
+        var int i;
+        var Alien current;
+        if(~flagBullet){
+        return false;
+        }
+
+        let i = 0;
+
+        while(i<length){
+            let current = AlienArray[i];
+            if(current.checkHitAlien(bulletX,bulletY)){
+               return true;
             }
             let i = i+1;
         }

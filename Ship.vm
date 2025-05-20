@@ -213,6 +213,22 @@ function Ship.getY 0
     pop pointer 0
     push this 1
     return
+function Ship.getBulletX 1
+    push argument 0
+    pop pointer 0
+    push this 2
+    call Shot.getX 1
+    pop local 0
+    push local 0
+    return
+function Ship.getBulletY 1
+    push argument 0
+    pop pointer 0
+    push this 2
+    call Shot.getY 1
+    pop local 0
+    push local 0
+    return
 function Ship.createBullet 1
     push argument 0
     pop pointer 0
@@ -229,8 +245,6 @@ function Ship.createBullet 1
     push local 0
     add
     push this 1
-    push constant 15
-    sub
     call Shot.new 2
     pop this 2
     push constant 1
@@ -266,8 +280,8 @@ function Ship.checkBullet 0
     pop pointer 0
     push this 2
     call Shot.getY 1
-    push constant 11
-    lt
+    push constant 0
+    eq
     not
     if-goto Ship_9
     push constant 0
@@ -278,6 +292,16 @@ function Ship.checkBullet 0
     goto Ship_8
 label Ship_9
 label Ship_8
+    push constant 0
+    return
+function Ship.shotHit 0
+    push argument 0
+    pop pointer 0
+    push constant 0
+    pop this 3
+    push this 2
+    call Shot.dispose 1
+    pop temp 0
     push constant 0
     return
 function Ship.getFlagBullet 0

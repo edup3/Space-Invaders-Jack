@@ -67,13 +67,24 @@ class Ship {
     method int getY(){
         return y;
     }
+     method int getBulletX(){
+        var int bulletX;
+        let bulletX = bullet.getX();
+        return bulletX;
+    }
+
+    method int getBulletY(){
+        var int bulletY;
+        let bulletY = bullet.getY();
+        return bulletY;
+    }
 
     method void createBullet(char key) {
 		var int posicion_x;
 
         if(key = 32){
             let posicion_x = (10)/2;
-            let bullet = Shot.new(x + posicion_x, y - 15);
+            let bullet = Shot.new(x + posicion_x, y);
             let flagBullet = true;
         }
         return;
@@ -89,10 +100,17 @@ class Ship {
     }
 
      method void checkBullet(){
-        if (bullet.getY() < 11){
+        if (bullet.getY() = 0){
             let flagBullet = false;
 			do bullet.dispose();
         }
+        return;
+
+	}
+     method void shotHit(){
+        let flagBullet = false;
+		do bullet.dispose();
+
         return;
 
 	}

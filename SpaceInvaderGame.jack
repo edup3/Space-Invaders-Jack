@@ -25,12 +25,16 @@ class SpaceInvaderGame {
                 if(aliens.checkCol(player.getY())){
                     let win = false;
                     do Output.printString("Perdiste");
+                    return;
                 }
                 do Screen.clearScreen();
                 do aliens.update();
                 do aliens.draw();
                 do player.draw();
                 do player.drawBullet();
+                if(aliens.checkHit(player.getBulletX(),player.getBulletY(),player.getFlagBullet())){
+                    do player.shotHit();
+                }
                 do Sys.wait(200);
                 let key = Keyboard.keyPressed();
             }
@@ -38,6 +42,7 @@ class SpaceInvaderGame {
                 if(aliens.checkCol(player.getY())){
                     let win = false;
                     do Output.printString("Perdiste");
+                    return;
                 }
                 do player.move(key);
                 do Screen.clearScreen();
@@ -48,8 +53,12 @@ class SpaceInvaderGame {
                     do player.createBullet(key);
                 }
                 do player.drawBullet();
+                if(aliens.checkHit(player.getBulletX(),player.getBulletY(),player.getFlagBullet()) ){
+                    do player.shotHit();
+                }
                 do Sys.wait(200);
                 let key = Keyboard.keyPressed();
+
             }
             let key = Keyboard.keyPressed();
         }

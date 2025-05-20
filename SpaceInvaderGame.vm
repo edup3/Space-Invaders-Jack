@@ -54,6 +54,8 @@ label SpaceInvaderGame_2
     call String.appendChar 2
     call Output.printString 1
     pop temp 0
+    push constant 0
+    return
     goto SpaceInvaderGame_4
 label SpaceInvaderGame_5
 label SpaceInvaderGame_4
@@ -71,6 +73,22 @@ label SpaceInvaderGame_4
     push this 2
     call Ship.drawBullet 1
     pop temp 0
+    push this 1
+    push this 2
+    call Ship.getBulletX 1
+    push this 2
+    call Ship.getBulletY 1
+    push this 2
+    call Ship.getFlagBullet 1
+    call AlienArmy.checkHit 4
+    not
+    if-goto SpaceInvaderGame_7
+    push this 2
+    call Ship.shotHit 1
+    pop temp 0
+    goto SpaceInvaderGame_6
+label SpaceInvaderGame_7
+label SpaceInvaderGame_6
     push constant 200
     call Sys.wait 1
     pop temp 0
@@ -78,19 +96,19 @@ label SpaceInvaderGame_4
     pop local 1
     goto SpaceInvaderGame_2
 label SpaceInvaderGame_3
-label SpaceInvaderGame_6
+label SpaceInvaderGame_8
     push local 1
     push constant 0
     eq
     not
     not
-    if-goto SpaceInvaderGame_7
+    if-goto SpaceInvaderGame_9
     push this 1
     push this 2
     call Ship.getY 1
     call AlienArmy.checkCol 2
     not
-    if-goto SpaceInvaderGame_9
+    if-goto SpaceInvaderGame_11
     push constant 0
     pop local 2
     push constant 8
@@ -113,9 +131,11 @@ label SpaceInvaderGame_6
     call String.appendChar 2
     call Output.printString 1
     pop temp 0
-    goto SpaceInvaderGame_8
-label SpaceInvaderGame_9
-label SpaceInvaderGame_8
+    push constant 0
+    return
+    goto SpaceInvaderGame_10
+label SpaceInvaderGame_11
+label SpaceInvaderGame_10
     push this 2
     push local 1
     call Ship.move 2
@@ -135,24 +155,40 @@ label SpaceInvaderGame_8
     call Ship.getFlagBullet 1
     not
     not
-    if-goto SpaceInvaderGame_11
+    if-goto SpaceInvaderGame_13
     push this 2
     push local 1
     call Ship.createBullet 2
     pop temp 0
-    goto SpaceInvaderGame_10
-label SpaceInvaderGame_11
-label SpaceInvaderGame_10
+    goto SpaceInvaderGame_12
+label SpaceInvaderGame_13
+label SpaceInvaderGame_12
     push this 2
     call Ship.drawBullet 1
     pop temp 0
+    push this 1
+    push this 2
+    call Ship.getBulletX 1
+    push this 2
+    call Ship.getBulletY 1
+    push this 2
+    call Ship.getFlagBullet 1
+    call AlienArmy.checkHit 4
+    not
+    if-goto SpaceInvaderGame_15
+    push this 2
+    call Ship.shotHit 1
+    pop temp 0
+    goto SpaceInvaderGame_14
+label SpaceInvaderGame_15
+label SpaceInvaderGame_14
     push constant 200
     call Sys.wait 1
     pop temp 0
     call Keyboard.keyPressed 0
     pop local 1
-    goto SpaceInvaderGame_6
-label SpaceInvaderGame_7
+    goto SpaceInvaderGame_8
+label SpaceInvaderGame_9
     call Keyboard.keyPressed 0
     pop local 1
     goto SpaceInvaderGame_0

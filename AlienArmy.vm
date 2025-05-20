@@ -9,9 +9,9 @@ function AlienArmy.new 4
     push this 1
     call Array.new 1
     pop this 0
-    push constant 1
+    push constant 0
     pop local 2
-    push constant 10
+    push constant 0
     pop local 3
 label AlienArmy_0
     push local 1
@@ -32,7 +32,7 @@ label AlienArmy_0
     push temp 0
     pop that 0
     push local 2
-    push constant 20
+    push constant 16
     add
     pop local 2
     push local 1
@@ -191,5 +191,51 @@ label AlienArmy_14
     pop local 0
     goto AlienArmy_12
 label AlienArmy_13
+    push constant 0
+    return
+function AlienArmy.checkHit 2
+    push argument 0
+    pop pointer 0
+    push argument 3
+    not
+    not
+    if-goto AlienArmy_17
+    push constant 0
+    return
+    goto AlienArmy_16
+label AlienArmy_17
+label AlienArmy_16
+    push constant 0
+    pop local 0
+label AlienArmy_18
+    push local 0
+    push this 1
+    lt
+    not
+    if-goto AlienArmy_19
+    push local 0
+    push this 0
+    add
+    pop pointer 1
+    push that 0
+    pop local 1
+    push local 1
+    push argument 1
+    push argument 2
+    call Alien.checkHitAlien 3
+    not
+    if-goto AlienArmy_21
+    push constant 1
+    neg
+    return
+    goto AlienArmy_20
+label AlienArmy_21
+label AlienArmy_20
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    goto AlienArmy_18
+label AlienArmy_19
     push constant 0
     return

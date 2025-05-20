@@ -1,5 +1,5 @@
 function Alien.new 0
-    push constant 2
+    push constant 3
     call Memory.alloc 1
     pop pointer 0
     push argument 0
@@ -9,14 +9,14 @@ function Alien.new 0
     push constant 1
     neg
     pop static 0
+    push constant 1
+    neg
+    pop this 2
     push pointer 0
     return
 function Alien.dispose 0
     push argument 0
     pop pointer 0
-    push pointer 0
-    call Alien.erase 1
-    pop temp 0
     push pointer 0
     call Memory.deAlloc 1
     pop temp 0
@@ -25,43 +25,53 @@ function Alien.dispose 0
 function Alien.check 1
     push argument 0
     pop pointer 0
+    push this 2
+    not
+    if-goto Alien_1
     push static 0
     pop local 0
     push this 0
-    push constant 600
+    push constant 16
+    add
+    push constant 512
     gt
     not
-    if-goto Alien_1
-    push constant 0
-    pop static 0
-    goto Alien_0
-label Alien_1
-label Alien_0
-    push this 0
-    push constant 40
-    sub
-    push constant 0
-    lt
-    not
     if-goto Alien_3
-    push constant 1
-    neg
+    push constant 0
     pop static 0
     goto Alien_2
 label Alien_3
 label Alien_2
+    push this 0
+    push constant 16
+    sub
+    push constant 0
+    lt
+    not
+    if-goto Alien_5
+    push constant 1
+    neg
+    pop static 0
+    goto Alien_4
+label Alien_5
+label Alien_4
     push local 0
     push static 0
     eq
     not
     not
-    if-goto Alien_5
+    if-goto Alien_7
     push constant 1
     neg
     return
-    goto Alien_4
-label Alien_5
-label Alien_4
+    goto Alien_6
+label Alien_7
+label Alien_6
+    push constant 0
+    return
+    goto Alien_0
+label Alien_1
+label Alien_0
     push constant 0
     return
 function Alien.updateX 0
@@ -69,18 +79,18 @@ function Alien.updateX 0
     pop pointer 0
     push static 0
     not
-    if-goto Alien_7
+    if-goto Alien_9
     push this 0
     push constant 20
     add
     pop this 0
-    goto Alien_6
-label Alien_7
+    goto Alien_8
+label Alien_9
     push this 0
     push constant 20
     sub
     pop this 0
-label Alien_6
+label Alien_8
     push constant 0
     return
 function Alien.moveDown 0
@@ -95,13 +105,22 @@ function Alien.moveDown 0
 function Alien.draw 1
     push argument 0
     pop pointer 0
+    push this 2
+    not
+    not
+    if-goto Alien_11
+    push constant 0
+    return
+    goto Alien_10
+label Alien_11
+label Alien_10
     push constant 16384
     push this 1
     push constant 32
     call Math.multiply 2
     add
     push this 0
-    push constant 20
+    push constant 16
     call Math.divide 2
     add
     pop local 0
@@ -213,7 +232,7 @@ function Alien.erase 1
     call Math.multiply 2
     add
     push this 0
-    push constant 20
+    push constant 16
     call Math.divide 2
     add
     pop local 0
@@ -318,15 +337,65 @@ function Alien.checkCol 0
     push argument 0
     pop pointer 0
     push this 1
+    push constant 16
+    add
     push argument 1
     gt
     not
-    if-goto Alien_9
+    if-goto Alien_13
     push constant 1
     neg
     return
-    goto Alien_8
-label Alien_9
-label Alien_8
+    goto Alien_12
+label Alien_13
+label Alien_12
+    push constant 0
+    return
+function Alien.checkHitAlien 0
+    push argument 0
+    pop pointer 0
+    push argument 1
+    push this 0
+    gt
+    push constant 16
+    sub
+    push argument 1
+    push this 0
+    lt
+    push constant 16
+    add
+    and
+    push argument 2
+    push this 1
+    gt
+    push constant 16
+    add
+    and
+    push argument 2
+    push this 1
+    lt
+    push constant 16
+    sub
+    and
+    not
+    if-goto Alien_15
+    push constant 0
+    pop this 2
+    push pointer 0
+    call Alien.dispose 1
+    pop temp 0
+    push constant 1
+    neg
+    return
+    goto Alien_14
+label Alien_15
+label Alien_14
+    push constant 0
+    return
+function Alien.die 0
+    push argument 0
+    pop pointer 0
+    push constant 0
+    pop this 2
     push constant 0
     return

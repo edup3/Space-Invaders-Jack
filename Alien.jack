@@ -1,33 +1,37 @@
 class Alien {
     field int x,y;
     static boolean direction;
+    field boolean alive;
 
     constructor Alien new(int ax,int ay){
         let x = ax;
         let y = ay;
         let direction = true;
+        let alive = true;
 
         return this;
     }
 
     method void dispose(){
-        do erase();
         do Memory.deAlloc(this);
         return;
     }
 
     method boolean check(){
-    var boolean lastdir;
-    let lastdir = direction;
-        if(x>600){
-            let direction = false;
+        var boolean lastdir;
+        if(alive){
+            let lastdir = direction;
+                if(x+16>512){
+                    let direction = false;
+                }
+                if (x-16<0){
+                    let direction = true;
+                }
+            if(~(lastdir=direction)){
+                return true;
+            }
+            return false;
         }
-        if (x-40<0){
-            let direction = true;
-        }
-    if(~(lastdir=direction)){
-        return true;
-    }
         return false;
     }
 
@@ -49,7 +53,10 @@ class Alien {
 
     method void draw(){
         var int memAddress; 
-        let memAddress = 16384+ (y*32)+ (x/20);
+        if(~alive){
+        return;
+        }
+        let memAddress = 16384+ (y*32)+ (x/16);
        // column 0
         do Memory.poke(memAddress +64, 8196);
         do Memory.poke(memAddress +32, 0);
@@ -71,7 +78,7 @@ class Alien {
 
     method void erase(){
         var int memAddress; 
-        let memAddress = 16384+ (y*32) + (x/20);
+        let memAddress = 16384+ (y*32) + (x/16);
        // column 0
         do Memory.poke(memAddress +64, 0);
         do Memory.poke(memAddress +32, 0);
@@ -96,9 +103,21 @@ class Alien {
     }
 
     method boolean checkCol(int playerY){
-        if(y>playerY){
+        if(y+16>playerY){
             return true;
         }
         return false;
+    }
+    method boolean checkHitAlien(int bulletX,int bulletY){
+        if((bulletX>x-16) & (bulletX<x+16) & (bulletY>y+16) & (bulletY<y-16)){
+            let alive = false;
+            do dispose();
+            return true;
+        }
+        return false;
+    }
+    method void die(){
+    let alive = false;
+    return;
     }
 }

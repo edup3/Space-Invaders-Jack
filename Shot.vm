@@ -32,7 +32,7 @@ function Shot.moveUp 0
     pop this 1
     goto Shot_0
 label Shot_1
-    push constant 10
+    push constant 0
     pop this 1
 label Shot_0
     push constant 0
@@ -45,42 +45,21 @@ function Shot.draw 0
     call Screen.setColor 1
     pop temp 0
     push this 0
-    push constant 1
-    sub
     push this 1
-    push constant 3
-    sub
     push this 0
-    push constant 1
+    push constant 3
     add
     push this 1
-    push constant 3
+    push constant 6
     add
     call Screen.drawRectangle 4
     pop temp 0
     push constant 0
     return
-function Shot.erase 0
+function Shot.getX 0
     push argument 0
     pop pointer 0
-    push constant 0
-    call Screen.setColor 1
-    pop temp 0
     push this 0
-    push constant 1
-    sub
-    push this 1
-    push constant 3
-    sub
-    push this 0
-    push constant 1
-    add
-    push this 1
-    push constant 3
-    add
-    call Screen.drawRectangle 4
-    pop temp 0
-    push constant 0
     return
 function Shot.getY 0
     push argument 0

@@ -1,9 +1,10 @@
 class Shot {
     field int x, y;
 
-    constructor Alien new(int ax,int ay){
+    constructor Shot new(int ax,int ay){
         let x = ax;
         let y = ay;
+        
 
         return this;
     }
@@ -18,7 +19,7 @@ class Shot {
             let y = y - 10; 
         }
         else{
-            let y = 10;
+            let y = 0;
         }
 
         return;
@@ -26,16 +27,13 @@ class Shot {
 
     method void draw() {
         do Screen.setColor(true);
-        do Screen.drawRectangle(x-1, y-3, x+1, y+3);
+        do Screen.drawRectangle(x, y, x+3, y+6);
 
         return;
     }
 
-    method void erase() {
-        do Screen.setColor(false);
-        do Screen.drawRectangle(x-1, y-3, x+1, y+3);
-
-        return;
+     method int getX(){
+        return x;
     }
 
     method int getY(){
