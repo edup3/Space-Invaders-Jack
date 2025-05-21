@@ -109,7 +109,10 @@ class Alien {
         return false;
     }
     method boolean checkHitAlien(int bulletX,int bulletY){
-        if((bulletX>x-16) & (bulletX<x+16) & (bulletY>y+16) & (bulletY<y-16)){
+        var int alienEndX, alienEndY;
+        let alienEndX = x+19;
+        let alienEndY = y+22;
+        if((bulletX>x) & (bulletX<alienEndX) & (bulletY>y) & (bulletY<alienEndY)){
             let alive = false;
             do dispose();
             return true;

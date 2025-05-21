@@ -351,31 +351,31 @@ label Alien_13
 label Alien_12
     push constant 0
     return
-function Alien.checkHitAlien 0
+function Alien.checkHitAlien 2
     push argument 0
     pop pointer 0
+    push this 0
+    push constant 19
+    add
+    pop local 0
+    push this 1
+    push constant 22
+    add
+    pop local 1
     push argument 1
     push this 0
     gt
-    push constant 16
-    sub
     push argument 1
-    push this 0
+    push local 0
     lt
-    push constant 16
-    add
     and
     push argument 2
     push this 1
     gt
-    push constant 16
-    add
     and
     push argument 2
-    push this 1
+    push local 1
     lt
-    push constant 16
-    sub
     and
     not
     if-goto Alien_15
