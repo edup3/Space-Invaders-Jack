@@ -20,7 +20,7 @@ class SpaceInvaderGame {
 
         let win = true;
 
-        while(win & (deadAliens=10)){
+        while(win & ~(deadAliens=10)){
 
             while(key = 0){
                 if(aliens.checkCol(player.getY())){

@@ -23,6 +23,7 @@ label SpaceInvaderGame_0
     push this 3
     push constant 10
     eq
+    not
     and
     not
     if-goto SpaceInvaderGame_1
